@@ -46,6 +46,4 @@ i dont end up procastinating! so i just had to add some.. flavour to it..! soooo
 - overall, ive wrote too much idk if anyone even read it to the end here but Thank you for reading this, last but not the least, id like to say i really like my silly lil web app, im definitely gonna use it to stay locked in ( iam actually using it rn)
   i made all the assets myself, illustrations and then animating them, then making the home page animations, and other layouts, and ui ux stuff. it look me whole 7 days to finish this. im reeaally proud of it. i hope whoever tried it likes it too..
   its actually one of my first projects so i was really nervous about it but.. haha Bismillah T-T (oh yeah i might be forgetting some more features in there but yeah lets see if u can spot them out!) 
-
-- css; i first made the css with placeholders (where id use the actual assets that ill make in the future) and just stylized it (EVERYTHING IS OK WITH CSS EXCEPT SOMETIMES IT TRIGGERS ME LIKE WHY DONT U JUST CENTER THIS BUTTON LIKE A GOOD BOY) (spoiler: it doesnt listen) (i force it tho idc :P)
   
