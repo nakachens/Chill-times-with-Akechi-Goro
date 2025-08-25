@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=EG+Garamond:wght@400;500;600;700&family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="style.css" />
+        <title>goro says lock in</title>
+    </head>
+    <body>
+        <div class="app-container">
+        <div class="sound-controls">
+            <div class="sound-toggle">
+                <button class="sound-btn" id="mute-btn">🔊</button>
+                <button class="sound-btn" id="volume-toggle-btn">🎚️</button>
+            </div>
+            <div class="volume-control" id="volume-control">
+                <div class="sound-label">Volume</div>
+                <input type="range" min="0" max="1" step="0.1" value="0.5" class="volume-slider" id="volume-slider">
+            </div>
+        </div>
+        
+        <!--home-->
+        <div class="screen home-screen active" id="home-screen">
+            <div class="art-holder">
+            </div>
+            <div class="click-instruction" id="start-text"></div>
+        </div>
+
+        <!--activity slect -->
+        <div class="screen" id="activity-screen">
+            <div class="activity-container">
+                <div class="text-box">
+                    <div class="akechi" style="background: url('./assetso/normal.webp')center no-repeat; background-size: contain; box-shadow:  5px 5px 0 0 black;"></div>
+                    <div class="text-content">What's the plan for today?</div>
+                </div>
+                <div class="activity-selection">
+                    <div class="activity study" data-activity="study">
+                    </div>
+                    <div class="activity work" data-activity="work">
+                    </div>
+                    <div class="activity hangout" data-activity="hangout">
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="btn" id="back-to-home">Back</button>
+                </div>
+            </div>
+        </div>
+
+        <!--timers -->
+        <div class="screen" id="timer-screen">
+            <div class="timer-container">
+                <div class="timer-selection">
+                    <div class="timer-option" data-time="15">15</div>
+                    <div class="timer-option" data-time="30">30</div>
+                    <div class="timer-option" data-time="45">45</div>
+                    <div class="timer-option" data-time="60">60</div>
+                </div>
+                <div class="timer-dialogue" id="timer-dialogue">Select your session duration</div>
+                <div class="timer-confirm">
+                    <button class="btn btn-done" id="timer-done"></button>
+                    <button class="btn btn-think" id="timer-think"></button>
+                </div>
+            </div>
+        </div>
+
+        <!--sessions -->
+        <div class="screen session-screen study-session" id="study-session">
+            <div class="art-holder" id="study">
+            </div>
+            <div class="session-controls">
+                <button class="btn" id="break-btn">Break Time</button>
+                <div class="timer-circle-container">
+                    <svg class="progress-ring" width="120" height="120">
+                        <circle class="progress-ring-circle" r="50" cx="60" cy="60"></circle>
+                    </svg>
+                    <div class="timer-display" id="study-timer">25:00</div>
+                </div>
+                <button class="btn" id="end-session">End Session</button>
+            </div>
+            <button class="btn" id="start-btn">Start</button>
+        </div>
+
+        <div class="screen session-screen work-session" id="work-session">
+            <div class="art-holder" id="work">
+            </div>
+            <div class="session-controls">
+                <button class="btn" id="work-break-btn">Break Time</button>
+                <div class="timer-circle-container">
+                    <svg class="progress-ring" width="120" height="120">
+                        <circle class="progress-ring-circle" r="50" cx="60" cy="60"></circle>
+                    </svg>
+                    <div class="timer-display" id="work-timer">25:00</div>
+                </div>
+                <button class="btn" id="work-end-session">End Session</button>
+            </div>
+            <button class="btn" id="work-start-btn">Start</button>
+        </div>
+
+        <div class="screen session-screen hangout-session" id="hangout-session">
+            <div class="art-holder" id="hangout">
+            </div>
+            <div class="session-controls">
+                <button class="btn" id="hangout-break-btn">Break Time</button>
+                <div class="timer-circle-container">
+                    <svg class="progress-ring" width="120" height="120">
+                        <circle class="progress-ring-circle" r="50" cx="60" cy="60"></circle>
+                    </svg>
+                    <div class="timer-display" id="hangout-timer">25:00</div>
+                </div>
+                <button class="btn" id="hangout-end-session">End Session</button>
+            </div>
+            <button class="btn" id="hangout-start-btn">Start</button>
+        </div>
+
+        <!--breaks -->
+        <div class="screen break-screen study-break" id="study-break">
+            <div class="art-holder" id="study-break-placeholder">
+            </div>
+            <div class="session-controls">
+                <button class="btn" id="end-study-break">End Session</button>
+                <div class="timer-circle-container">
+                    <svg class="progress-ring" width="120" height="120">
+                        <circle class="progress-ring-circle" r="50" cx="60" cy="60"></circle>
+                    </svg>
+                    <div class="timer-display" id="study-break-timer">5:00</div>
+                </div>
+                <button class="btn" id="continue-study">Continue</button>
+            </div>
+        </div>
+
+        <div class="screen break-screen work-break" id="work-break">
+            <div class="art-holder" id="work-break-placeholder">
+            </div>
+            <div class="session-controls">
+                <button class="btn" id="end-work-break">End Session</button>
+                <div class="timer-circle-container">
+                    <svg class="progress-ring" width="120" height="120">
+                        <circle class="progress-ring-circle" r="50" cx="60" cy="60"></circle>
+                    </svg>
+                    <div class="timer-display" id="work-break-timer">5:00</div>
+                </div>
+                <button class="btn" id="continue-work">Continue</button>
+            </div>
+        </div>
+
+        <div class="screen break-screen hangout-break" id="hangout-break">
+            <div class="art-holder" id="hangout-break-placeholder">
+            </div>
+            <div class="session-controls">
+                <button class="btn" id="end-hangout-break">End Session</button>
+                <div class="timer-circle-container">
+                    <svg class="progress-ring" width="120" height="120">
+                        <circle class="progress-ring-circle" r="50" cx="60" cy="60"></circle>
+                    </svg>
+                    <div class="timer-display" id="hangout-break-timer">5:00</div>
+                </div>
+                <button class="btn" id="continue-hangout">Continue</button>
+            </div>
+        </div>
+
+        <!-- endscreens -->
+        <div class="screen end-screen" id="end-screen">
+            <div class="art-holder">
+                <div class="text-box">
+                    <div class="akechi" style="background: url('./assetso/Cognitive-Goro.webp')center no-repeat; background-size: contain; box-shadow:  5px 5px 0 0 black;"></div>
+                    <div class="text-content">Oh I see... well that's too bad I gotta go now.</div>
+                </div>
+                <div style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%);">
+                    <button class="btn" id="thank-btn"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen complete-screen" id="complete-screen">
+            <div class="art-holder">
+                <div class="text-box">
+                    <div class="akechi" style="background: url('./assetso/smiling.webp')center no-repeat; background-size: contain; box-shadow:  5px 5px 0 0 black;"></div>
+                    <div class="text-content" id="complete-message">I didn't expect you would do this! Good job!</div>
+                </div>
+                <div style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%);">
+                    <button class="btn" id="complete-thank-btn"></button>
+                </div>
+            </div>
+        </div>
+
+        <!--back home-->
+        <div class="screen" id="return-home-screen">
+            <div class="art-holder" style="display: flex; justify-content: center; align-items: center;">
+                <button class="btn" id="return-home-btn"></button>
+            </div>
+        </div>
+
+        <!--pop uops-->
+        <div class="popup" id="end-confirm" style="display: none;">
+            <h3>Are you sure you want to end this session?</h3>
+            <p style="color: wheat;">Your progress will be lost.</p>
+            <div class="popup-buttons">
+                <button class="btn btn-yes" id="confirm-end"></button>
+                <button class="btn btn-no" id="cancel-end"></button>
+            </div>
+        </div>
+
+        <div class="popup" id="break-confirm" style="display: none;">
+            <h3>Do you want to take a break right now?</h3>
+            <div class="popup-buttons">
+                <button class="btn btn-yes" id="confirm-break"></button>
+                <button class="btn btn-no" id="cancel-break"></button>
+            </div>
+        </div>
+    </div>
+
+    <!--audios-->
+    <audio id="home-music" loop>
+        <source src="./soundzz/No More What Ifs.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="hangout-music" loop>
+        <source src="./soundzz/P5 OST 01 Wake Up, Get Up, Get Out There - MCshawarmaUpload.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="study-music" loop>
+        <source src="./soundzz/Beneath the Mask -instrumental version-.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="work-music" loop>
+        <source src="./soundzz/告白秘密 -piano version-.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="break-music" loop>
+        <source src="./soundzz/No More What Ifs.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="end-music">
+        <source src="./soundzz/Persona 5 OST - Bad EndMementos Depths Theme.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="complete-music">
+        <source src="./soundzz/Beneath the Mask.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="click-sound">
+        <source src="./soundzz/clickfr.mp3" type="audio/mpeg">
+    </audio>
+        <script src="./script.js"></script>
+    </body>
+</html>
