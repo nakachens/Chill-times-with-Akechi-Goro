@@ -1,0 +1,609 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fira Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #897949, #542606, #897949);
+            color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .app-container {
+            width: 850px;
+            height: 500px;
+            background: rgb(0, 0, 0);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 10px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+
+        .screen.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .art-holder {
+            flex-grow: 1;
+            aspect-ratio: 1000/550;
+            background: rgba(31, 11, 0, 0.916);
+            border-radius: 10px;
+            margin: 0 auto;
+            width: 95%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .home-screen .art-holder {
+            background: url('./assetso/allscreens/Home.gif') center/contain no-repeat;
+        }
+
+        .activity-selection {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .activity {
+            width: 150px;
+            height: 150px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .activity:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            opacity: 70%;
+        }
+
+        .activity i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .study {
+            background: url('./assetso/study-btn.png') center/cover no-repeat;
+            margin-top: 10px;
+        }
+
+        .work {
+            background: url('./assetso/work-btn.png') center/cover no-repeat;
+            margin-top: 10px;
+        }
+
+        .hangout {
+            background: url('./assetso/hangout-btn.png') center/cover no-repeat;
+            margin-top: 10px;
+        }
+        
+        .activity-container {
+            background: #3921077a;
+            border-radius: 10%;
+            opacity: 100%;
+            width: auto;
+            height: 100%; 
+        }
+        
+        .timer-container {
+            background: #4637287a;
+            border-radius: 10%;
+            opacity: 100%;
+            width: auto;
+            height: 100%;
+        }
+        
+        .timer-selection {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 135px;
+        }
+
+        .timer-option {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #2e0900;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .timer-option:hover {
+            background: #a08953;
+            transform: scale(1.1);
+        }
+
+        .timer-confirm {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .timer-dialogue {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #ffcc70;
+        }
+
+        .study-session .art-holder {
+            background: url('./assetso/allscreens/Study.gif') center/cover no-repeat;
+            width: 600px;
+            height: 150px;
+        }
+
+        .work-session .art-holder {
+            background: url('./assetso/allscreens/Work.gif') center/cover no-repeat;
+            width: 600px;
+            height: 150px;
+        }
+
+        .hangout-session .art-holder {
+            background: url('./assetso/allscreens/Hangout.gif') center/cover no-repeat;
+            width: 600px;
+            height: 150px;
+        }
+
+        .session-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .timer-circle-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+
+        .timer-display {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Droid Sans Mono', monospace;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .study-break .art-holder {
+            background: url('./assetso/allscreens/Study Break.gif') center/contain no-repeat;
+            width: 750px;
+            height: 150px;
+        }
+
+        .work-break .art-holder {
+            background: url('./assetso/allscreens/Work b.gif') center/contain no-repeat;
+            width: 750px;
+            height: 150px;
+        }
+
+        .hangout-break .art-holder {
+            background: url('./assetso/allscreens/Hangout Break.gif') center/contain no-repeat;
+            width: 750px;
+            height: 150px;
+        }
+
+        .end-screen .art-holder {
+            background: url('./assetso/allscreens/Ending screen.gif') center/cover no-repeat;
+        }
+
+        .complete-screen .art-holder {
+            background: url('./assetso/allscreens/Ending screen.gif') center/cover no-repeat;
+        }
+
+        .btn {
+            padding: 10px 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 150px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-hidden {
+            display: none;
+        }
+
+        .btn-done {
+            background: url('./assetso/done-btn.png') center/contain no-repeat;
+            width: 155px;
+            height: 47px;
+            flex-shrink: 0;
+        }
+        .btn-done:hover {
+            background: url('./assetso/done2-btn.png') center/contain no-repeat;
+        }
+
+        .btn-think {
+            background: url('./assetso/thinkagain2-btn.png') center/contain no-repeat;
+            width: 172px;
+            height: 47px;
+            flex-shrink: 0;
+        }
+        .btn-think:hover {
+            background: url('./assetso/thinkagain-btn.png') center/contain no-repeat;
+        }
+
+        #break-btn, 
+        #work-break-btn,
+        #hangout-break-btn {
+            background: url('./assetso/break2-btn.png') center/contain no-repeat;
+            width: 168px;
+            height: 47px;
+            flex-shrink: 0;
+            color: transparent;
+        }
+        #break-btn:hover,
+        #work-break-btn:hover,
+        #hangout-break-btn:hover {
+            background: url('./assetso/break-btn.png') center/contain no-repeat;
+        }
+
+        #end-session,
+        #work-end-session,
+        #hangout-end-session {
+            background: url('./assetso/end2-btn.png') center/contain no-repeat;
+            width: 172px;
+            height: 47px;
+            flex-shrink: 0;
+            color: transparent;
+        }
+        #end-session:hover,
+        #work-end-session:hover,
+        #hangout-end-session:hover {
+            background: url('./assetso/end-btn.png') center/contain no-repeat;
+        }
+
+        #end-study-break,
+        #end-work-break,
+        #end-hangout-break {
+            background: url('./assetso/end2-btn.png') center/contain no-repeat;
+            width: 172px;
+            height: 47px;
+            flex-shrink: 0;
+            color: transparent;
+        }
+        #end-study-break:hover,
+        #end-work-break:hover,
+        #end-hangout-break:hover {
+            background: url('./assetso/end-btn.png') center/contain no-repeat;
+        }
+
+        #continue-study,
+        #continue-work,
+        #continue-hangout {
+            background: url('./assetso/continue-btn.png') center/contain no-repeat;
+            width: 192px;
+            height: 47px;
+            flex-shrink: 0;
+            color: transparent;
+        }
+        #continue-study:hover,
+        #continue-work:hover,
+        #continue-hangout:hover {
+            background: url('./assetso/continue2-btn.png') center/contain no-repeat;
+        }
+
+        #start-btn,
+        #work-start-btn,
+        #hangout-start-btn {
+            background: url('./assetso/start-btn.png') center/contain no-repeat;
+            width: 831px;
+            height: 43.6px;
+            margin: -5px auto 0;
+            margin-left: 10px;
+            margin-bottom: 20px;
+            flex-shrink: 0;
+            color: transparent;
+        }
+        #start-btn:hover,
+        #work-start-btn:hover,
+        #hangout-start-btn:hover {
+            background: url('./assetso/start2-btn.png') center/contain no-repeat;
+        }
+
+        #thank-btn,
+        #complete-thank-btn {
+            background: url('./assetso/ty2-btn.png') center/contain no-repeat;
+            width: 347px;
+            height: 38px;
+            flex-shrink: 0;
+            color: transparent;
+        }
+        #thank-btn:hover,
+        #complete-thank-btn:hover {
+            background: url('./assetso/ty-btn.png') center/contain no-repeat;
+        }
+
+        #return-home-btn {
+            background: url('./assetso/home-btn.png') center/contain no-repeat;
+            width: 197px;
+            height: 47px;
+            flex-shrink: 0;
+            color: transparent;
+        }
+        #return-home-btn:hover {
+            background: url('./assetso/home2-btn.png') center/contain no-repeat;
+        }
+
+        #back-to-home {
+            background: url('./assetso/back2-btn.png') center/contain no-repeat;
+            width: 155px;
+            height: 47px;
+            margin-top: 20px;
+            flex-shrink: 0;
+            color: transparent;
+        }
+        #back-to-home:hover {
+            background: url('./assetso/back-btn.png') center/contain no-repeat;
+        }
+
+        .btn-yes {
+            background: url('./assetso/yes-btn.png') center/contain no-repeat;
+            width: 155px;
+            height: 47px;
+            flex-shrink: 0;
+            color: transparent;
+        }
+        .btn-yes:hover {
+            background: url('./assetso/yes2-btn.png') center/contain no-repeat;
+        }
+
+        .btn-no {
+            background: url('./assetso/no-btn.png') center/contain no-repeat;
+            width: 155px;
+            height: 47px;
+            flex-shrink: 0;
+            color: transparent;
+        }
+        .btn-no:hover {
+            background: url('./assetso/no2-btn.png') center/contain no-repeat;
+        }
+
+        .text-box {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(160, 152, 120, 0.9);
+            border: 2px solid #533903;
+            border-radius: 15px;
+            padding: 15px;
+            max-width: 70%;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease;
+            z-index: 10;
+        }
+        
+        #activity-screen .text-box {
+            top: 65%;
+        }
+        
+        .end-screen .text-box,
+        .complete-screen .text-box {
+            top: 30%;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .akechi {
+            width: 80px;
+            height: 80px;
+            border-radius: 20%;
+            border: 2px solid #533903;
+            flex-shrink: 0;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 5px 5px 0 0 black;
+        }
+
+        .text-content {
+            color: #2e0900;
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+        .random-dialogue {
+            position: absolute;
+            top: 240px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(132, 113, 73, 0.9);
+            box-shadow: 2px 2px 2px 0 #383837b0;
+            color: rgb(254, 254, 254);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            animation: floatUp 3s ease forwards;
+            z-index: 20;
+            pointer-events: none;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        @keyframes floatUp {
+            0% { opacity: 0; transform: translate(-50%, 0); }
+            20% { opacity: 1; transform: translate(-50%, -10px); }
+            80% { opacity: 1; transform: translate(-50%, -30px); }
+            100% { opacity: 0; transform: translate(-50%, -50px); }
+        }
+
+
+        .popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(105, 103, 74, 0.95);
+            padding: 30px;
+            border: 3px solid #000;
+            box-shadow: 5px 5px 0 0 #000000;
+            border-radius: 15px;
+            text-align: center;
+            z-index: 20;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .popup h3 {
+            margin-bottom: 20px;
+            color: #f3ce96;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: #000;
+        }
+
+        .popup-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring-circle {
+            stroke-dasharray: 314;
+            stroke-dashoffset: 314;
+            transition: stroke-dashoffset 1s linear;
+            stroke: #D7CDA3;
+            stroke-width: 6;
+            fill: transparent;
+        }
+        
+        .sound-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            z-index: 100;
+        }
+        
+        .sound-toggle {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .sound-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(62, 1, 1, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .sound-btn:hover {
+            background: rgba(205, 0, 0, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .volume-control {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(62, 1, 1, 0.2);
+            padding: 15px;
+            border-radius: 20px;
+            transform-origin: top right;
+            transform: scale(0);
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .volume-control.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .volume-slider {
+            width: 120px;
+            margin: 10px 0;
+        }
+        
+        .sound-label {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            color: rgb(234, 214, 195);
+        }
